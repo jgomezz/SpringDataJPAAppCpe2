@@ -6,7 +6,7 @@ import pe.edu.tecsup.springbootapp.entities.Categoria;
 
 import java.util.List;
 
-public interface CategoriaRepository extends JpaRepository<Categoria, Integer> {
+public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 }
 
 
