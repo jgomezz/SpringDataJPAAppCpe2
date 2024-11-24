@@ -1,16 +1,24 @@
 package pe.edu.tecsup.springbootapp.entities;
 
+import jakarta.persistence.*;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
 @Data
+@Entity
+@Table(name = "productos")
 public class Producto {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long categorias_id;
+
+    @ManyToOne
+    @JoinColumn(name="categorias_id")
     private Categoria categoria;
+
     private String nombre;
     private String descripcion;
     private Double precio;
@@ -21,4 +29,19 @@ public class Producto {
     private Integer estado;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date creado;
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", precio=" + precio +
+                ", stock=" + stock +
+                ", imagen_nombre='" + imagen_nombre + '\'' +
+                ", imagen_tipo='" + imagen_tipo + '\'' +
+                ", imagen_tamanio=" + imagen_tamanio +
+                ", estado=" + estado +
+                '}';
+    }
 }

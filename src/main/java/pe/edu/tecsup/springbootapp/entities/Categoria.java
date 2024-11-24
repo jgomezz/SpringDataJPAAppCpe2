@@ -3,6 +3,10 @@ package pe.edu.tecsup.springbootapp.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 @Data
 @Entity
 @Table(name= "categorias")
@@ -15,4 +19,17 @@ public class Categoria {
     private String nombre;
 
     private Integer orden;
+
+    @OneToMany(mappedBy = "categoria")
+    private List<Producto> productos = new ArrayList<>();
+
+    @Override
+    public String toString() {
+        return "Categoria{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", orden=" + orden +
+                '}';
+    }
+
 }

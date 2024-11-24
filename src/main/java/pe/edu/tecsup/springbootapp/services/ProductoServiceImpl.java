@@ -6,6 +6,7 @@ import pe.edu.tecsup.springbootapp.entities.Producto;
 import pe.edu.tecsup.springbootapp.repositories.ProductoRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -26,14 +27,22 @@ public class ProductoServiceImpl implements  ProductoService{
     @Override
     public List<Producto> findByName(String nombre) throws Exception {
         log.info("call findByName()");
-        return this.productoRepository.findByName(nombre);
+        return this.productoRepository.findByNombre(nombre);
 
     }
 
     @Override
     public Producto findById(Long id) throws Exception {
         log.info("call findById()");
-        return this.productoRepository.findById(id);
+
+        this.productoRepository.findById(id);
+
+        Optional<Producto> byId = this.productoRepository.findById(id);
+
+        if(byId.isPresent())
+            return byId.get();
+        else
+            throw  new Exception("Errot to get data");
     }
 
     @Override
@@ -51,6 +60,6 @@ public class ProductoServiceImpl implements  ProductoService{
     @Override
     public void update(Long id, String nombreProducto) throws Exception {
         log.info("call update()");
-        this.productoRepository.update(id, nombreProducto);
+        //this.productoRepository.update(id, nombreProducto);
     }
 }

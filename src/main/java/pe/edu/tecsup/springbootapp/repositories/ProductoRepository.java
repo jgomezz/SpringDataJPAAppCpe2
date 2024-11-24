@@ -1,14 +1,18 @@
 package pe.edu.tecsup.springbootapp.repositories;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import pe.edu.tecsup.springbootapp.entities.Producto;
 
 import java.util.List;
 
-public interface ProductoRepository {
+public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
-    List<Producto> findAll() throws Exception;
+    List<Producto> findByNombre(String nombre);
 
-    List<Producto> findByName(String nombre) throws Exception;
+    /*
+    List<Producto> findAll();
+
+    List<Producto> findByName(String nombre);
 
     Producto findById(Long id) throws Exception;
 
@@ -17,7 +21,7 @@ public interface ProductoRepository {
     void update(Long id, String nombreProducto) throws Exception;
 
     void deleteById(Long id) throws Exception;
-
+*/
 }
 
 
