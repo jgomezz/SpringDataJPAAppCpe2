@@ -58,8 +58,8 @@ public class ProductoServiceImpl implements  ProductoService{
     }
 
     @Override
-    public void update(Long id, String nombreProducto) throws Exception {
+    public void update(Producto producto) throws Exception {
         log.info("call update()");
-        //this.productoRepository.update(id, nombreProducto);
+        this.productoRepository.save(producto);
     }
 }

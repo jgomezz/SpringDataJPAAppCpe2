@@ -16,6 +16,6 @@ public interface ProductoService {
 
     void deleteById(Long id) throws Exception;
 
-    void update(Long id, String nombreProducto) throws Exception;
+    void update(Producto producto) throws Exception;
 
 }

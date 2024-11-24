@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import pe.edu.tecsup.springbootapp.entities.Categoria;
 import pe.edu.tecsup.springbootapp.entities.Producto;
 
 import java.util.List;
@@ -36,9 +37,9 @@ class ProductoServiceTest {
 
         Boolean VALUE_EXPECTED = true;
 
-        List<Producto> productos = this.productoService.findByName("AMD");
+        List<Producto> productos = this.productoService.findByName("Kingstone");
 
-        log.info("Print by productos");
+        log.info("Print by productos" + productos.size());
         productos.stream().forEach(prod -> log.info(prod.getNombre()));
 
         assertEquals(VALUE_EXPECTED, !productos.isEmpty());
@@ -56,14 +57,18 @@ class ProductoServiceTest {
 
     }
 
-    //@Test
+    @Test
     void save() throws Exception {
 
         List<Producto> productos = this.productoService.findAll();
         int totalAntes = productos.size();
 
         Producto producto = new Producto();
-        //producto.setCategorias_id(1L);
+
+        Categoria categoria = new Categoria();
+        categoria.setId(1L);
+        producto.setCategoria(categoria);
+
         producto.setNombre("AMD");
         producto.setDescripcion("AMD X10");
         producto.setPrecio(280.0);
@@ -97,7 +102,7 @@ class ProductoServiceTest {
 
     //@Test
     void update() throws Exception {
-
+/*
         // Actualizar el nombre del producto
         Long id = 1L; // Relacionado con tus datos de pruebas
         String NOMBRE_ORIGINAL = "Kingstone" ;
@@ -123,6 +128,6 @@ class ProductoServiceTest {
 
         // Verificar que el nombre ha sido cambiado
         assertEquals(NOMBRE_ORIGINAL,prod.getNombre());
-
+*/
     }
 }
