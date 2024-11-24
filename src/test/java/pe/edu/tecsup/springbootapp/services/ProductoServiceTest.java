@@ -49,7 +49,7 @@ class ProductoServiceTest {
     void findById() throws Exception {
 
         String NAME_EXPECTED = "Kingstone";
-        Long ID = 1L;
+        Long ID = 2L;
         Producto producto = this.productoService.findById(ID);
         log.info(producto.toString());
 
@@ -100,34 +100,35 @@ class ProductoServiceTest {
         assertEquals(1, totalAntes - totalDespues);
     }
 
-    //@Test
+    @Test
     void update() throws Exception {
-/*
+
         // Actualizar el nombre del producto
         Long id = 1L; // Relacionado con tus datos de pruebas
-        String NOMBRE_ORIGINAL = "Kingstone" ;
-        String NOMBRE_A_CAMBIAR = "Kingstone Cambiado" ;
+        String NOMBRE_ORIGINAL = "Procesador Intel";
+        String NOMBRE_A_CAMBIAR = "Procesador Intel Cambiado";
         Producto prod = null;
 
-        // Actualizar
-        productoService.update(id, NOMBRE_A_CAMBIAR);
 
-
-        // Buscar el producto
+        // Actualizar nombre original
         prod = productoService.findById(id);
+        prod.setNombre(NOMBRE_ORIGINAL);
+        productoService.update(prod);
+
 
         // Verificar que el nombre ha sido cambiado
+        prod = productoService.findById(id);
+        assertEquals(NOMBRE_ORIGINAL, prod.getNombre());
+
+
+        // Actualizar nombre a cambiar
+        prod = productoService.findById(id);
+        prod.setNombre(NOMBRE_A_CAMBIAR);
+        productoService.update(prod);
+
+
+        // Verificar que el nombre ha sido cambiado
+        prod = productoService.findById(id);
         assertEquals(NOMBRE_A_CAMBIAR, prod.getNombre());
-
-        // Actualizar
-        productoService.update(id, NOMBRE_ORIGINAL);
-
-
-        // Buscar el producto
-        prod = productoService.findById(id);
-
-        // Verificar que el nombre ha sido cambiado
-        assertEquals(NOMBRE_ORIGINAL,prod.getNombre());
-*/
     }
 }
